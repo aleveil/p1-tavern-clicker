@@ -2,7 +2,6 @@
 const mainButton = document.querySelector(".main-button");
 const beerCounterElement = document.querySelector(".counter");
 
-
 let beers = 0;
 
 function updateBeersDisplay() {
@@ -14,9 +13,10 @@ function addBeer(amount) {
 	updateBeersDisplay();
 }
 
+const upgradeManual = new Upgrade("Serveur", "Un serveur efficace.", 1, 10, false, 1);
 
 mainButton.addEventListener("click", () => {
-	addBeer(1);
+	upgradeManual.earn();
 });
 
 // update display on start
