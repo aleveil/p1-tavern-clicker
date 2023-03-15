@@ -31,7 +31,7 @@ nav {
   color: #333;
 }
 
-.main {
+main {
   margin-top: 25px;
   display: flex;
   flex-direction: row;
@@ -73,7 +73,7 @@ nav {
   /* exemple de couleur de fond pour la div droite */
 }
 
-.column {
+.column-title {
   margin-bottom: 20px;
   padding: 10px;
   background-color: #fff;

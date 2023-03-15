@@ -1,6 +1,7 @@
 class Upgrade {
 
-	constructor(_title, _description, _incomePerUnit, _price, _isAuto, _quantity = 0) {
+	constructor(_id, _title, _description, _incomePerUnit, _price, _isAuto, _quantity = 0) {
+		this.id = _id;
 		this.title = _title;
 		this.description = _description;
 
