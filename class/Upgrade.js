@@ -10,7 +10,7 @@ class Upgrade {
 		this.totalIncome = 0;
 
 		this.price = _price;
-		this.priceMultiplicator = 2;
+		this.priceMultiplicator = 1.5;
 
 		this.isAuto = _isAuto;
 
