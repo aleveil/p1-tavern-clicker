@@ -15,9 +15,13 @@ const upgrades = {
 }
 
 // create upgrades and store into arrays
-upgrades.manuals.push(new Upgrade("Serveur", "Un habile serveur.", 1, 10, false, 1));
-upgrades.automatics.push(new Upgrade("Habitué", "Un client ivre.", 2, 50, true));
-upgrades.automatics.push(new Upgrade("Barman", "Un barman accueillant.", 5, 250, true));
+upgrades.manuals.push(new Upgrade("Waiter", "A skillful waiter.", 1, 10, false, "imgs/waiter.jpg", 1));
+upgrades.automatics.push(new Upgrade("Drunk Regular", "A drunk customer.", 2, 50, true, "imgs/regular.jpg"));
+upgrades.automatics.push(new Upgrade("Bardenter", "A friendly bartender.", 5, 250, true, "imgs/bartender.jpg"));
+upgrades.automatics.push(new Upgrade("Bard", "A cheerful bard.", 25, 500, true, "imgs/bard.jpg"));
+upgrades.automatics.push(new Upgrade("King", "A supporting king.", 100, 1000, true, "imgs/king.jpg"));
+
+
 
 // create upgrades elements (Display DOM element)
 upgrades.manuals.forEach(upgrade => {upgrade.createUpgradeElement(manualUpgradesContainer)});

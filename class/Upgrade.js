@@ -1,6 +1,6 @@
 class Upgrade {
 
-	constructor(_title, _description, _incomePerUnit, _price, _isAuto, _quantity = 0) {
+	constructor(_title, _description, _incomePerUnit, _price, _isAuto, _imagePath, _quantity = 0) {
 		this.title = _title;
 		this.description = _description;
 
@@ -15,6 +15,7 @@ class Upgrade {
 		this.isAuto = _isAuto;
 
 		this.elementData = null;
+		this.imagePath = _imagePath;
 
 		if (this.isAuto)
 			setInterval(() => { this.earn() }, 1000);
@@ -50,6 +51,7 @@ class Upgrade {
 		// create elements
 		const container = document.createElement("div");
 		const title = document.createElement("h3");
+		const image = document.createElement("img");
 		const quantity = document.createElement("p");
 		const income = document.createElement("p");
 		const incomePerUnit = document.createElement("p");
@@ -59,14 +61,18 @@ class Upgrade {
 		// assign class/id
 		container.classList.add("upgrade-container");
 		title.classList.add("upgrade-title");
+		image.classList.add("upgrade-image");
 		quantity.classList.add("upgrade-quantity");
 		income.classList.add("upgrade-income");
 		incomePerUnit.classList.add("upgrade-incomePerUnit");
 		totalIncome.classList.add("upgrade-totalIncome");
 		buyButton.classList.add("upgrade-buyButton");
-	
+		
+		image.src = this.imagePath;
+
 		// append elements
 		container.appendChild(title);
+		container.appendChild(image);
 		container.appendChild(quantity);
 		container.appendChild(income);
 		container.appendChild(incomePerUnit);
@@ -80,6 +86,7 @@ class Upgrade {
 		this.elementData = {
 			container: container,
 			title: title,
+			image: image,
 			quantity: quantity,
 			income: income,
 			incomePerUnit: incomePerUnit,
