@@ -48,12 +48,30 @@ main {
   align-items: center;
   flex-direction: column;
   border: 1px solid black;
-  /* exemple de couleur de fond pour la div gauche */
+  height: 600px;
+  background-image: url("/imgs/background.jpg");
+  background-size: cover;
 }
 
 .main-button {
   width: 200px;
-  height: 100px;
+  height: 200px;
+  background-image: url(/imgs/beer.png);
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: contain;
+  border: none;
+  cursor: pointer;
+}
+
+.main-button:hover {
+  transform: scale(1.03);
+}
+
+.main-button:active {
+  transform: scale(1);
+  filter: brightness(0.8);
 }
 
 .right-part {
@@ -61,7 +79,6 @@ main {
   display: flex;
   flex-direction: column;
   background-color: #eee;
-  /* exemple de couleur de fond pour la div droite */
 }
 
 .column-title {
