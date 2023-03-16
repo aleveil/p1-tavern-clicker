@@ -1,7 +1,6 @@
 class Upgrade {
 
-	constructor(_id, _title, _description, _incomePerUnit, _price, _isAuto, _quantity = 0) {
-		this.id = _id;
+	constructor(_title, _description, _incomePerUnit, _price, _isAuto, _quantity = 0) {
 		this.title = _title;
 		this.description = _description;
 
@@ -27,7 +26,7 @@ class Upgrade {
 		{
 			addBeer(currentIncome);
 			this.totalIncome += currentIncome;
-			this.updateElement();
+			this.updateUpgradeElement();
 		}
 	}
 
@@ -40,14 +39,14 @@ class Upgrade {
 			addBeer( -(this.price) );
 			this.price = Math.ceil(this.price * this.priceMultiplicator);
 			this.quantity++;
-			this.updateElement();
+			this.updateUpgradeElement();
 			return true;
 		}
 		else
 			return false;
 	}
 
-	createElement(parentElement) {
+	createUpgradeElement(parentElement) {
 		// create elements
 		const container = document.createElement("div");
 		const title = document.createElement("h3");
@@ -59,7 +58,6 @@ class Upgrade {
 	
 		// assign class/id
 		container.classList.add("upgrade-container");
-		container.id = `upgrade-${this.id}`;
 		title.classList.add("upgrade-title");
 		quantity.classList.add("upgrade-quantity");
 		income.classList.add("upgrade-income");
@@ -90,10 +88,10 @@ class Upgrade {
 		};
 
 		parentElement.appendChild(container);
-		this.updateElement();
+		this.updateUpgradeElement();
 	}
 
-	updateElement() {
+	updateUpgradeElement() {
 		this.elementData.title.innerText = this.title;
 		this.elementData.quantity.innerText = `Quantity : ${this.quantity}🍺`;
 		this.elementData.income.innerText = `Income : ${this.quantity * this.incomePerUnit}🍺`;

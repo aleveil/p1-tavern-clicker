@@ -1,6 +1,8 @@
 // query elements
 const mainButton = document.querySelector(".main-button");
 const beerCounterElement = document.querySelector(".counter");
+const beerCounterSecondElement = document.querySelector(".counter-seconds");
+
 
 const manualUpgradesContainer = document.querySelector("#manual-column");
 const autoUpgradesContainer = document.querySelector("#auto-column");
@@ -12,13 +14,14 @@ const upgrades = {
 	automatics: []
 }
 
-upgrades.manuals.push(new Upgrade(1, "Serveur", "Un habile serveur.", 1, 10, false, 1));
-upgrades.automatics.push(new Upgrade(2, "Habitué", "Un client ivre.", 2, 50, true));
-upgrades.automatics.push(new Upgrade(3, "Barman", "Un barman accueillant.", 5, 250, true));
+// create upgrades and store into arrays
+upgrades.manuals.push(new Upgrade("Serveur", "Un habile serveur.", 1, 10, false, 1));
+upgrades.automatics.push(new Upgrade("Habitué", "Un client ivre.", 2, 50, true));
+upgrades.automatics.push(new Upgrade("Barman", "Un barman accueillant.", 5, 250, true));
 
-// create upgrades elements
-upgrades.manuals.forEach(upgrade => {upgrade.createElement(manualUpgradesContainer)});
-upgrades.automatics.forEach(upgrade => {upgrade.createElement(autoUpgradesContainer)});
+// create upgrades elements (Display DOM element)
+upgrades.manuals.forEach(upgrade => {upgrade.createUpgradeElement(manualUpgradesContainer)});
+upgrades.automatics.forEach(upgrade => {upgrade.createUpgradeElement(autoUpgradesContainer)});
 
 // manage beers
 let beers = 0;
@@ -39,3 +42,14 @@ updateBeersDisplay();
 mainButton.addEventListener("click", () => {
 	upgrades.manuals.forEach(upgrade => {upgrade.earn()});
 });
+
+// update counter/sec
+function updateCounterSecond() {
+	let totalPerSecond = 0;
+	upgrades.automatics.forEach(upgrade => {
+		totalPerSecond += upgrade.quantity * upgrade.incomePerUnit;
+	});
+	beerCounterSecondElement.innerHTML = totalPerSecond > 1 ? `${totalPerSecond} beers/sec` : `${totalPerSecond} beer/sec`;
+}
+
+setInterval(updateCounterSecond, 1000);
