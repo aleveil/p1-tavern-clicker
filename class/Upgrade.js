@@ -50,33 +50,43 @@ class Upgrade {
 	createUpgradeElement(parentElement) {
 		// create elements
 		const container = document.createElement("div");
-		const title = document.createElement("h3");
+
 		const image = document.createElement("img");
+
+		const infosContainer = document.createElement("div");
+		const title = document.createElement("h3");
 		const quantity = document.createElement("p");
 		const income = document.createElement("p");
 		const incomePerUnit = document.createElement("p");
 		const totalIncome = document.createElement("p");
+
 		const buyButton = document.createElement("button");
 	
 		// assign class/id
 		container.classList.add("upgrade-container");
-		title.classList.add("upgrade-title");
+
 		image.classList.add("upgrade-image");
+		infosContainer.classList.add("upgrade-infos-container");
+		title.classList.add("upgrade-title");
 		quantity.classList.add("upgrade-quantity");
 		income.classList.add("upgrade-income");
 		incomePerUnit.classList.add("upgrade-incomePerUnit");
 		totalIncome.classList.add("upgrade-totalIncome");
-		buyButton.classList.add("upgrade-buyButton");
+
+		buyButton.classList.add("upgrade-buy-button");
 		
 		image.src = this.imagePath;
 
 		// append elements
-		container.appendChild(title);
 		container.appendChild(image);
-		container.appendChild(quantity);
-		container.appendChild(income);
-		container.appendChild(incomePerUnit);
-		container.appendChild(totalIncome);
+
+		container.appendChild(infosContainer);
+		infosContainer.appendChild(title);
+		infosContainer.appendChild(quantity);
+		infosContainer.appendChild(income);
+		infosContainer.appendChild(incomePerUnit);
+		infosContainer.appendChild(totalIncome);
+
 		container.appendChild(buyButton);
 		
 		// buy button event
@@ -85,8 +95,8 @@ class Upgrade {
 		// create and assign elementData object
 		this.elementData = {
 			container: container,
-			title: title,
 			image: image,
+			title: title,
 			quantity: quantity,
 			income: income,
 			incomePerUnit: incomePerUnit,
@@ -104,6 +114,6 @@ class Upgrade {
 		this.elementData.income.innerText = `Income : ${this.quantity * this.incomePerUnit}🍺`;
 		this.elementData.incomePerUnit.innerText = `Income/Unit : ${this.incomePerUnit}🍺`;
 		this.elementData.totalIncome.innerText = `Total Income : ${this.totalIncome}🍺`;
-		this.elementData.buyButton.innerHTML = `BUY<br />[${this.price}🍺]`;
+		this.elementData.buyButton.innerHTML = `BUY<br />Cost ${this.price}🍺`;
 	}
 }
