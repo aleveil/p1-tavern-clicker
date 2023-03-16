@@ -100,7 +100,7 @@ class Upgrade {
 
 	updateUpgradeElement() {
 		this.elementData.title.innerText = this.title;
-		this.elementData.quantity.innerText = `Quantity : ${this.quantity}🍺`;
+		this.elementData.quantity.innerText = `Quantity : ${this.quantity}`;
 		this.elementData.income.innerText = `Income : ${this.quantity * this.incomePerUnit}🍺`;
 		this.elementData.incomePerUnit.innerText = `Income/Unit : ${this.incomePerUnit}🍺`;
 		this.elementData.totalIncome.innerText = `Total Income : ${this.totalIncome}🍺`;
