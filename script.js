@@ -27,7 +27,7 @@ upgrades.automatics.forEach(upgrade => {upgrade.createUpgradeElement(autoUpgrade
 let beers = 0;
 
 function updateBeersDisplay() {
-	beerCounterElement.innerText = beers > 1 ? `${beers} Beers` : `${beers} Beer`;
+	beerCounterElement.innerText = `${beers} 🍺`;
 }
 
 function addBeer(amount) {
@@ -49,7 +49,7 @@ function updateCounterSecond() {
 	upgrades.automatics.forEach(upgrade => {
 		totalPerSecond += upgrade.quantity * upgrade.incomePerUnit;
 	});
-	beerCounterSecondElement.innerHTML = totalPerSecond > 1 ? `${totalPerSecond} beers/sec` : `${totalPerSecond} beer/sec`;
+	beerCounterSecondElement.innerHTML = `${totalPerSecond} 🍺/sec`;
 }
 
 setInterval(updateCounterSecond, 1000);
