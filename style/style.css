@@ -1,38 +1,38 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  height: 50px;
+  width: 100%;
+  padding: 0 2%;
+}
+
 nav {
-  border: 2px solid black;
-  width: 1170px;
-  height: 60px;
-  margin: auto;
-  padding: 15px;
-  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .nav-area {
-  float: right;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: row;
   list-style: none;
-  ;
-}
-
-.nav-area li {
-  display: inline-block;
 }
 
 .nav-area li a {
-
-  color: black;
   text-decoration: none;
   padding: 5px 20px;
-  font-family: poppins;
-  font-size: 20px;
 }
 
 .nav-area li a:hover {
-  background: #fff;
-  color: #333;
+
 }
 
 main {
-  margin-top: 25px;
   display: flex;
   flex-direction: row;
 }
@@ -48,17 +48,8 @@ main {
   align-items: center;
   flex-direction: column;
   border: 1px solid black;
-  background-color: #ddd;
   /* exemple de couleur de fond pour la div gauche */
 }
-/* 
-.counter-container {
-  border: 1px solid black;
-  width: 100px;
-  padding: 75px;
-  margin-bottom: 100px;
-  height: 25px;
-} */
 
 .main-button {
   width: 200px;
@@ -78,4 +69,20 @@ main {
   padding: 10px;
   background-color: #fff;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+@media screen and (max-width: 600px) {
+/* 
+  .nav-area {
+    flex-direction: column;
+  } */
+
+  main {
+    flex-direction: column;
+  }
+
+  .left-part {
+    height: 300px;
+  }
+
 }
