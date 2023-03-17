@@ -41,6 +41,7 @@ class Upgrade {
 			this.price = Math.ceil(this.price * this.priceMultiplicator);
 			this.quantity++;
 			this.updateUpgradeElement();
+			updateHiddenUpgrades();
 			return true;
 		}
 		else
@@ -51,11 +52,11 @@ class Upgrade {
 		// create elements
 		const container = document.createElement("div");
 
+		const profileContainer = document.createElement("div")
 		const image = document.createElement("img");
 
 		const infosContainer = document.createElement("div");
 		const title = document.createElement("h3");
-		const quantity = document.createElement("p");
 		const income = document.createElement("p");
 		const incomePerUnit = document.createElement("p");
 		const totalIncome = document.createElement("p");
@@ -65,12 +66,12 @@ class Upgrade {
 		// assign class/id
 		container.classList.add("upgrade-container");
 
+		profileContainer.classList.add("upgrade-profile-container")
 		image.classList.add("upgrade-image");
 		infosContainer.classList.add("upgrade-infos-container");
 		title.classList.add("upgrade-title");
-		quantity.classList.add("upgrade-quantity");
 		income.classList.add("upgrade-income");
-		incomePerUnit.classList.add("upgrade-incomePerUnit");
+		incomePerUnit.classList.add("upgrade-income-per-unit");
 		totalIncome.classList.add("upgrade-totalIncome");
 
 		buyButton.classList.add("upgrade-buy-button");
@@ -78,11 +79,12 @@ class Upgrade {
 		image.src = this.imagePath;
 
 		// append elements
-		container.appendChild(image);
 
-		container.appendChild(infosContainer);
+		container.appendChild(profileContainer);
+		profileContainer.appendChild(image);
+
+		profileContainer.appendChild(infosContainer);
 		infosContainer.appendChild(title);
-		infosContainer.appendChild(quantity);
 		infosContainer.appendChild(income);
 		infosContainer.appendChild(incomePerUnit);
 		infosContainer.appendChild(totalIncome);
@@ -97,7 +99,6 @@ class Upgrade {
 			container: container,
 			image: image,
 			title: title,
-			quantity: quantity,
 			income: income,
 			incomePerUnit: incomePerUnit,
 			totalIncome: totalIncome,
@@ -109,11 +110,12 @@ class Upgrade {
 	}
 
 	updateUpgradeElement() {
-		this.elementData.title.innerText = this.title;
-		this.elementData.quantity.innerText = `Quantity : ${this.quantity}`;
-		this.elementData.income.innerText = `Income : ${this.quantity * this.incomePerUnit}🍺`;
-		this.elementData.incomePerUnit.innerText = `Income/Unit : ${this.incomePerUnit}🍺`;
-		this.elementData.totalIncome.innerText = `Total Income : ${this.totalIncome}🍺`;
-		this.elementData.buyButton.innerHTML = `BUY<br />Cost ${this.price}🍺`;
+		this.elementData.title.innerHTML = `${this.title}`;
+		this.elementData.income.innerHTML = `<span class="important-data">${this.quantity} ${this.title}${this.quantity > 1 ? "s": ""}</span> produce <span class="important-data">${this.quantity * this.incomePerUnit}🍺</span>`;
+		this.elementData.income.innerHTML += this.isAuto ? "/sec." : "/click." ;
+		this.elementData.incomePerUnit.innerHTML = `Each <span class="important-data">${this.title}</span> produce <span class="important-data">${this.incomePerUnit}🍺</span>`;
+		this.elementData.incomePerUnit.innerHTML += this.isAuto ? "/sec." : "/click." ;
+		this.elementData.totalIncome.innerHTML = `<span class="important-data">${this.totalIncome}🍺</span> produced so far.`;
+		this.elementData.buyButton.innerHTML = `<span class="important-data">BUY<br />Cost ${this.price}🍺</span>`;
 	}
 }

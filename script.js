@@ -25,8 +25,8 @@ upgrades.automatics.push(new Upgrade("King", "A supporting king.", 500, 5000, tr
 
 
 // create upgrades elements (Display DOM element)
-upgrades.manuals.forEach(upgrade => {upgrade.createUpgradeElement(manualUpgradesContainer)});
-upgrades.automatics.forEach(upgrade => {upgrade.createUpgradeElement(autoUpgradesContainer)});
+upgrades.manuals.forEach(upgrade => { upgrade.createUpgradeElement(manualUpgradesContainer) });
+upgrades.automatics.forEach(upgrade => { upgrade.createUpgradeElement(autoUpgradesContainer) });
 
 // manage beers
 let beers = 0;
@@ -45,7 +45,7 @@ updateBeersDisplay();
 
 // main click button event
 mainButton.addEventListener("click", () => {
-	upgrades.manuals.forEach(upgrade => {upgrade.earn()});
+	upgrades.manuals.forEach(upgrade => { upgrade.earn() });
 });
 
 // update counter/sec
@@ -56,5 +56,16 @@ function updateCounterSecond() {
 	});
 	beerCounterSecondElement.innerHTML = `${totalPerSecond} 🍺/sec`;
 }
-
 setInterval(updateCounterSecond, 1000);
+
+// update display/hide upgrades
+function updateHiddenUpgrades() {
+	for (let i = 1; i < upgrades.automatics.length; i++) {
+		if (upgrades.automatics[i - 1].quantity < 1)
+			upgrades.automatics[i].elementData.container.classList.add("hidden");
+		else
+		upgrades.automatics[i].elementData.container.classList.remove("hidden");
+	}
+}
+
+updateHiddenUpgrades();
